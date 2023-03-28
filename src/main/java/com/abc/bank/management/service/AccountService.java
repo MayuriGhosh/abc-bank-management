@@ -12,8 +12,8 @@ public class AccountService {
 	@Autowired
 	private BankAccountRepository accountRepository;
 
-	public void createAccount(Accounts acct) {
-		accountRepository.save(acct);
+	public Accounts createAccount(Accounts acct) {
+		return accountRepository.save(acct);
 	}
 
 	public Accounts getAccountInfo(int acctID) {

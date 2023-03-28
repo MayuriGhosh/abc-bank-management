@@ -6,14 +6,20 @@ import org.springframework.stereotype.Service;
 import com.abc.bank.management.dao.CustomerRepository;
 import com.abc.bank.management.model.Customer;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 
 @Service
+@AllArgsConstructor
+@NoArgsConstructor
 public class CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 
-	public void createCustomer(Customer customer) {
-		customerRepository.save(customer);
+	
+	public Customer createCustomer(Customer customer) {
+		return customerRepository.save(customer);
 	}
 
 	public Customer getCustomerInfo(int acctID) {

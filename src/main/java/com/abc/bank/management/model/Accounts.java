@@ -1,48 +1,25 @@
 package com.abc.bank.management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Accounts {
 	@Id
 	private int acctID;
 	private int balance;
 	private String acctStatus;
 
-	public Accounts() {
-
-	}
-
-	public Accounts(int acctID, int balance, String acctStatus) {
-		super();
-		this.acctID = acctID;
-		this.balance = balance;
-		this.acctStatus = acctStatus;
-	}
-
-	public int getAcctID() {
-		return acctID;
-	}
-
-	public void setAcctID(int acctID) {
-		this.acctID = acctID;
-	}
-
-	public int getBalance() {
-		return balance;
-	}
-
-	public void setBalance(int balance) {
-		this.balance = balance;
-	}
-
-	public String getAcctStatus() {
-		return acctStatus;
-	}
-
-	public void setAcctStatus(String acctStatus) {
-		this.acctStatus = acctStatus;
-	}
-
+	
 }
