@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    username: /secrets/bankinfo/db
+    url: jdbc-secretsmanager:mysql://database-1.cmusfo0yvf3m.eu-north-1.rds.amazonaws.com:3306/bankinfo
+    driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerMySQLDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
