@@ -1,8 +1,9 @@
 spring:
   datasource:
-    username: /secrets/bankinfo/db
-    url: jdbc-secretsmanager:mysql://database-1.cmusfo0yvf3m.eu-north-1.rds.amazonaws.com:3306/bankinfo
-    driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerMySQLDriver
+    username: admin
+    password: 6>T_^rF1y_1:g-,i&b|hUAOz%%K1v*vR
+    url: jdbc:mysql://database-1.cmusfo0yvf3m.eu-north-1.rds.amazonaws.com:3306/bankinfo
+    driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
