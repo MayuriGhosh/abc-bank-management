@@ -1,6 +1,7 @@
 package com.abc.bank.management.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +18,7 @@ import lombok.Setter;
 public class Customer {
 
 	@Id
+	@GeneratedValue
 	private int acctID;
 	private String custName;
 	private String city;
