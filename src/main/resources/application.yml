@@ -1,8 +1,8 @@
 spring:
   datasource:
     username: admin
-    password: 6>T_^rF1y_1:g-,i&b|hUAOz%%K1v*vR
-    url: jdbc:mysql://database-1.cmusfo0yvf3m.eu-north-1.rds.amazonaws.com:3306/bankinfo
+    password: dbuser1228
+    url: jdbc:mysql://database-2.cmusfo0yvf3m.eu-north-1.rds.amazonaws.com:3306/bank_poc_db
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:

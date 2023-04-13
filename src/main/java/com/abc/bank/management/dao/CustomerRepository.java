@@ -1,13 +1,10 @@
 package com.abc.bank.management.dao;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.abc.bank.management.model.Customer;
 
-@Repository
-public interface CustomerRepository {
 
-	
-	public Customer createCustomer(Customer customer);
-	
+public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+
 }
