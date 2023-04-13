@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.abc.bank.management.model.Customer;
 import com.abc.bank.management.model.Accounts;
-import com.abc.bank.management.service.AccountService;
 import com.abc.bank.management.service.CustomerService;
 
 import lombok.AllArgsConstructor;
@@ -27,10 +26,8 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-//@Api(tags = { "Customer and Bank Accounts REST endpoints" })
+//@Api(tags = { "Customer and Bank CustomerRepositoryImpl REST endpoints" })
 public class BankAccountsController {
-	@Autowired
-	private AccountService accountService;
 
 	@Autowired
 	private CustomerService customerService;
@@ -49,40 +46,40 @@ public class BankAccountsController {
 //			@ApiResponse(code = 500, message = "Internal Server Error") })
 	public Customer createCustomer(@RequestBody Customer customer) {
 		Customer customerCreated = customerService.createCustomer(customer);
-		Accounts acct = new Accounts(customerCreated.getAcctID(), 0, "Active");
-		acct =  accountService.createAccount(acct);
+		//Accounts acct = new Accounts(customerCreated.getAcctID(), 0, "Active");
+		//acct =  accountService.createAccount(acct);
 		return customerCreated;
 	}
 
-	@GetMapping("/customer/{acctID}")
-//	@ApiOperation(value = "Get customer details", notes = "Get Customer details by customer number.")
-//	@ApiResponses(value = {
-//			@ApiResponse(code = 200, message = "Success", response = Customer.class, responseContainer = "Object"),
-//			@ApiResponse(code = 400, message = "Bad Request"),
-//			@ApiResponse(code = 500, message = "Internal Server Error") })
-	public Customer getCustomerInfo(@PathVariable int acctID) {
-		return customerService.getCustomerInfo(acctID);
-	}
-
-	// getAccountInfo
-	@GetMapping("/account/{acctID}")
-//	@ApiOperation(value = "Get account information", notes = "Get aaccount information")
-//	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-//			@ApiResponse(code = 400, message = "Bad Request"),
-//			@ApiResponse(code = 500, message = "Internal Server Error") })
-	public Accounts getAccountInfo(@PathVariable int acctID) {
-		return accountService.getAccountInfo(acctID);
-	}	
-
-	// checkBalance
-	@GetMapping("/account/{acctID}/balance")
-//	@ApiOperation(value = "Get Balance", notes = "Get account balance")
-//	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-//			@ApiResponse(code = 400, message = "Bad Request"),
-//			@ApiResponse(code = 500, message = "Internal Server Error") })
-	public int getBalance(@PathVariable int acctID) {
-		return accountService.getBalance(acctID);
-	}
+//	@GetMapping("/customer/{acctID}")
+////	@ApiOperation(value = "Get customer details", notes = "Get Customer details by customer number.")
+////	@ApiResponses(value = {
+////			@ApiResponse(code = 200, message = "Success", response = Customer.class, responseContainer = "Object"),
+////			@ApiResponse(code = 400, message = "Bad Request"),
+////			@ApiResponse(code = 500, message = "Internal Server Error") })
+//	public Customer getCustomerInfo(@PathVariable int acctID) {
+//		//return customerService.getCustomerInfo(acctID);
+//	}
+//
+//	// getAccountInfo
+//	@GetMapping("/account/{acctID}")
+////	@ApiOperation(value = "Get account information", notes = "Get aaccount information")
+////	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
+////			@ApiResponse(code = 400, message = "Bad Request"),
+////			@ApiResponse(code = 500, message = "Internal Server Error") })
+//	public Accounts getAccountInfo(@PathVariable int acctID) {
+//		//return accountService.getAccountInfo(acctID);
+//	}	
+//
+//	// checkBalance
+//	@GetMapping("/account/{acctID}/balance")
+////	@ApiOperation(value = "Get Balance", notes = "Get account balance")
+////	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
+////			@ApiResponse(code = 400, message = "Bad Request"),
+////			@ApiResponse(code = 500, message = "Internal Server Error") })
+//	public int getBalance(@PathVariable int acctID) {
+//		//return accountService.getBalance(acctID);
+//	}
 
 	@DeleteMapping("/customer/{acctID}")
 //	@ApiOperation(value = "Delete Customer", notes = "Delete Bank Customer")
@@ -90,43 +87,43 @@ public class BankAccountsController {
 //			@ApiResponse(code = 400, message = "Bad Request"),
 //			@ApiResponse(code = 500, message = "Internal Server Error") })
 	public void deleteCustomer(@PathVariable int acctID) {
-		customerService.deleteCustomer(acctID);
+		//customerService.deleteCustomer(acctID);
 	}
 
 	// deleteAccount
 	@DeleteMapping("/account/{acctID}")
 	public void deleteAccount(@PathVariable int acctID) {
-		accountService.deleteAccount(acctID);
+		//accountService.deleteAccount(acctID);
 	}
 
-	// depositAmount
-	@PutMapping("/account/{acctID}/deposit/{amount}")
-	public void depositAmount(@PathVariable int acctID, @PathVariable int amount) {
-		int initBal = getBalance(acctID);
-		accountService.depositAmount(acctID, amount);
+//	// depositAmount
+//	@PutMapping("/account/{acctID}/deposit/{amount}")
+//	public void depositAmount(@PathVariable int acctID, @PathVariable int amount) {
+//		int initBal = getBalance(acctID);
+//		//accountService.depositAmount(acctID, amount);
+//
+//	}
 
-	}
-
-	// withdrawAmount
-	@PutMapping("/account/{acctID}/withdraw/{amount}")
-	public void withdrawAmount(@PathVariable int acctID, @PathVariable int amount) {
-		int initBal = getBalance(acctID);
-		accountService.withdrawAmount(acctID, amount);
-		logger.info("Withdraw Amount"+initBal);
-
-	}
+//	// withdrawAmount
+//	@PutMapping("/account/{acctID}/withdraw/{amount}")
+//	public void withdrawAmount(@PathVariable int acctID, @PathVariable int amount) {
+//		int initBal = getBalance(acctID);
+//	//accountService.withdrawAmount(acctID, amount);
+//		logger.info("Withdraw Amount"+initBal);
+//
+//	}
 
 	// transferAmount
-	@PutMapping("/account/{acctID}/transfer/{destAcctID}/{amount}")
-//	@ApiOperation(value = "Transfer funds between accounts", notes = "Transfer funds between accounts.")
-//	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Object.class),
-//			@ApiResponse(code = 400, message = "Bad Request"),
-//			@ApiResponse(code = 500, message = "Internal Server Error") })
-	public void transferAmount(@PathVariable int acctID, @PathVariable int destAcctID, @PathVariable int amount) {
-		int initBalSender = getBalance(acctID);
-		int initBalReceiver = getBalance(destAcctID);
-		accountService.transferAmount(acctID, destAcctID, amount);
-		logger.info("Transferred amount"+initBalSender+".The account balance now is" +initBalReceiver); 
-	}
+//	@PutMapping("/account/{acctID}/transfer/{destAcctID}/{amount}")
+////	@ApiOperation(value = "Transfer funds between accounts", notes = "Transfer funds between accounts.")
+////	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Object.class),
+////			@ApiResponse(code = 400, message = "Bad Request"),
+////			@ApiResponse(code = 500, message = "Internal Server Error") })
+//	public void transferAmount(@PathVariable int acctID, @PathVariable int destAcctID, @PathVariable int amount) {
+//		int initBalSender = getBalance(acctID);
+//		int initBalReceiver = getBalance(destAcctID);
+//		//accountService.transferAmount(acctID, destAcctID, amount);
+//		logger.info("Transferred amount"+initBalSender+".The account balance now is" +initBalReceiver); 
+//	}
 
 }
